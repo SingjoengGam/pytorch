@@ -5,6 +5,6 @@ RUN conda install -y faiss-gpu scikit-learn pandas flake8 yapf isort yacs gdown 
 
 RUN pip install --upgrade pip && python -m pip install --upgrade setuptools && \
     pip install diffusers==0.21.4 transformers xformers && \
-    pip install opencv-contrib-python controlnet_aux ipykernel
+    pip install opencv-contrib-python ipykernel
 
 COPY ./fonts/* /opt/conda/lib/python3.10/site-packages/matplotlib/mpl-data/fonts/ttf/
