@@ -1,7 +1,7 @@
 FROM homebrew/ubuntu18.04:latest
-RUN apt-get update && apt-get install -y libgl1-mesa-glx libpci-dev curl nano psmisc sudo zip git && apt-get --fix-broken install -y
+RUN sudo apt-get update && apt-get install -y libgl1-mesa-glx libpci-dev curl nano psmisc sudo zip git && apt-get --fix-broken install -y
 RUN sudo apt install python3-pip -y
-RUN apt-get install -y python3.10
+RUN sudo apt-get install -y python3.10
 RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
 
 RUN pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu118
