@@ -6,10 +6,6 @@ RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.1
 RUN sudo apt-get install kmod
 RUN echo "keyboard-configuration keyboard-configuration/country-select select English (US)" | debconf-set-selections
 ENV ACCEPT_EULA=yes
-RUN wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
-RUN sudo sh cuda_11.8.0_520.61.05_linux.run --override --toolkit  --silent
-RUN rm cuda_11.8.0_520.61.05_linux.run
-
 RUN pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu118
 
 # RUN conda install -y faiss-gpu scikit-learn pandas flake8 yapf isort yacs gdown future libgcc -c conda-forge
