@@ -4,7 +4,6 @@ RUN apt install python3-pip -y
 RUN apt-get install -y python3.10
 RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
 RUN sudo apt-get install kmod
-RUN sudo rmmod nvidia-uvm
 RUN echo "keyboard-configuration keyboard-configuration/country-select select English (US)" | debconf-set-selections
 ENV ACCEPT_EULA=yes
 RUN wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
