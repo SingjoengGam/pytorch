@@ -5,8 +5,10 @@ RUN apt-get install -y python3.10
 RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
 
 ENV ACCEPT_EULA=yes
-RUN wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
-RUN sudo sh cuda_11.8.0_520.61.05_linux.run
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
+RUN sudo dpkg -i cuda-keyring_1.0-1_all.deb
+RUN sudo apt-get update
+RUN sudo apt-get -y install cuda
 
 
 RUN pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu118
