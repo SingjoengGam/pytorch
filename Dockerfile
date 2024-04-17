@@ -3,10 +3,13 @@ RUN apt-get update && apt-get install -y libgl1-mesa-glx libpci-dev curl nano ps
 RUN apt install python3-pip -y
 RUN apt-get install -y python3.10
 RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
-
+RUN echo "keyboard-configuration keyboard-configuration/country-select select English (US)" | debconf-set-selections
 ENV ACCEPT_EULA=yes
-RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
-RUN sudo dpkg -i cuda-keyring_1.0-1_all.deb
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+RUN sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+RUN wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-ubuntu1804-11-8-local_11.8.0-520.61.05-1_amd64.deb
+RUN sudo dpkg -i cuda-repo-ubuntu1804-11-8-local_11.8.0-520.61.05-1_amd64.deb
+RUN sudo cp /var/cuda-repo-ubuntu1804-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
 RUN sudo apt-get update
 RUN sudo apt-get -y install cuda
 
