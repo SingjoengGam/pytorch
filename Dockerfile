@@ -1,6 +1,6 @@
 FROM firatozdemir/cu118-conda:latest
 RUN apt-get update && apt-get install -y sudo && apt-get --fix-broken install -y
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get clean
 RUN echo "keyboard-configuration keyboard-configuration/country-select select English (US)" | debconf-set-selections
 ENV ACCEPT_EULA=yes
 RUN wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
@@ -10,7 +10,7 @@ RUN apt-get install -y libgl1-mesa-glx libpci-dev curl nano psmisc zip git && ap
 RUN apt install python3-pip -y
 RUN apt-get install -y python3.10
 RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get clean
 RUN rm -rf /root/.cache/pip
 RUN pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu118  --no-cache-dir
 RUN rm -rf /root/.cache/pip
